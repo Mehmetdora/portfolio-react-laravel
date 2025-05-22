@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -15,8 +16,17 @@ use Inertia\Inertia;
 }); */
 
 Route::get('/', function () {
-    return Inertia::render('Portfolio');
-})->name('portfolio');
+    return Inertia::render('main');
+})->name('main');
+
+Route::controller(PortfolioController::class)->group(function(){
+    Route::get('/','main')->name('main');
+
+    Route::get('/projects/index','projects_index')->name('projects.index');
+    Route::get('/projects/{slug}/detail','projects_detail')->name('projects.detail');
+
+
+});
 
 
 

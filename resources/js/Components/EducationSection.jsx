@@ -1,8 +1,7 @@
-import { useRef } from 'react';
-import { GraduationCap, Calendar, Award } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
-import { Card, CardContent } from '@/Components/components/ui/card';
-import { Badge } from '@/Components/components/ui/badge';
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Card, CardContent } from "@/Components/components/ui/card";
+import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 
 export default function EducationSection() {
     const ref = useRef(null);
@@ -10,39 +9,54 @@ export default function EducationSection() {
 
     const education = [
         {
-            degree: 'Master of Science in Computer Science',
-            institution: 'University of Technology',
-            period: '2016 - 2018',
-            description: 'Specialized in Software Engineering and Artificial Intelligence. Graduated with honors.',
-            courses: ['Advanced Algorithms', 'Machine Learning', 'Software Architecture', 'Distributed Systems'],
+            degree: "Master of Science in Computer Science",
+            institution: "Stanford University",
+            location: "Stanford, CA",
+            period: "2017 - 2019",
+            description:
+                "Specialized in Human-Computer Interaction and Web Technologies. Graduated with honors and a 3.9 GPA.",
+            achievements: [
+                'Thesis: "Improving User Experience in Progressive Web Applications"',
+                "Teaching Assistant for Web Development and UI/UX Design courses",
+                "Received the Outstanding Graduate Student Award",
+            ],
         },
         {
-            degree: 'Bachelor of Science in Computer Science',
-            institution: 'State University',
-            period: '2012 - 2016',
-            description: 'Focused on programming fundamentals, data structures, and web development.',
-            courses: ['Data Structures and Algorithms', 'Database Systems', 'Web Development', 'Operating Systems'],
+            degree: "Bachelor of Science in Computer Science",
+            institution: "Massachusetts Institute of Technology",
+            location: "Cambridge, MA",
+            period: "2013 - 2017",
+            description:
+                "Focused on Software Engineering and Data Structures. Participated in multiple hackathons and coding competitions.",
+            achievements: [
+                "Capstone Project: E-learning platform with adaptive learning algorithms",
+                "Member of the Web Development Club and AI Research Group",
+                "Dean's List for all semesters",
+            ],
         },
     ];
 
-    const events = [
+    const certifications = [
         {
-            title: 'Web Development Summit',
-            organizer: 'TechConf',
-            year: '2023',
-            description: 'Participated in workshops on modern web development practices and emerging technologies.',
+            name: "AWS Certified Solutions Architect",
+            issuer: "Amazon Web Services",
+            date: "Dec 2021",
+            description:
+                "Professional certification validating expertise in designing distributed systems on AWS.",
         },
         {
-            title: 'AI and Machine Learning Conference',
-            organizer: 'AI Global',
-            year: '2022',
-            description: 'Attended sessions on the latest advancements in AI and their applications in software development.',
+            name: "Google Professional Cloud Developer",
+            issuer: "Google Cloud",
+            date: "Aug 2021",
+            description:
+                "Advanced certification for building scalable and reliable applications using Google Cloud.",
         },
         {
-            title: 'Open Source Contributors Meetup',
-            organizer: 'OSS Community',
-            year: '2021',
-            description: 'Collaborated with other developers on open-source projects and shared experiences.',
+            name: "React Advanced Patterns",
+            issuer: "Frontend Masters",
+            date: "Mar 2021",
+            description:
+                "In-depth course on advanced React patterns, performance optimization, and best practices.",
         },
     ];
 
@@ -56,171 +70,148 @@ export default function EducationSection() {
         },
     };
 
-    const sectionVariants = {
+    const cardVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: (i) => ({
             opacity: 1,
             y: 0,
             transition: {
-                delay: i * 0.2,
+                delay: i * 0.1,
                 duration: 0.5,
             },
         }),
     };
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: (i) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: i * 0.1,
-                duration: 0.4,
-            },
-        }),
-    };
-
     return (
-        <section id="education" className="py-16">
+        <section id="education" className="py-8 sm:py-12 md:py-16">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-8 sm:mb-12"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    animate={
+                        isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-3xl font-bold text-foreground">Education</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                        Education
+                    </h2>
                     <div className="mt-2 h-1 w-20 bg-gradient-to-r from-primary to-purple-600 mx-auto"></div>
+                    <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
+                        My academic background and professional certifications.
+                    </p>
                 </motion.div>
 
                 <motion.div
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                    className="space-y-6 sm:space-y-8"
                     variants={containerVariants}
                     initial="hidden"
-                    animate={isInView ? 'visible' : 'hidden'}
+                    animate={isInView ? "visible" : "hidden"}
                 >
-                    <motion.div custom={0} variants={sectionVariants}>
-                        <h3 className="text-2xl font-semibold mb-6 flex items-center text-foreground">
-                            <GraduationCap className="h-6 w-6 mr-2 text-primary" />
-                            Academic Education
-                        </h3>
+                    <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
+                        <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-primary" />
+                        Academic Education
+                    </h3>
 
-                        <div className="space-y-6">
-                            {education.map((edu, index) => (
-                                <motion.div
-                                    key={index}
-                                    custom={index}
-                                    variants={cardVariants}
-                                    whileHover={{ x: 10 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Card className="border-none shadow-lg bg-card/50 backdrop-blur-sm overflow-hidden">
-                                        <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-purple-600"></div>
-                                        <CardContent className="p-6 pl-8">
-                                            <div className="flex flex-col md:flex-row md:items-start justify-between mb-4">
-                                                <div>
-                                                    <h4 className="text-xl font-semibold text-foreground">{edu.degree}</h4>
-                                                    <p className="text-lg text-primary">{edu.institution}</p>
-                                                </div>
-                                                <div className="mt-2 md:mt-0">
-                                                    <Badge variant="outline" className="text-sm font-medium border-primary/50 text-primary">
-                                                        {edu.period}
-                                                    </Badge>
-                                                </div>
-                                            </div>
+                    {education.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            custom={index}
+                            variants={cardVariants}
+                        >
+                            <Card className="border-none shadow-lg bg-card/50 backdrop-blur-sm overflow-hidden">
+                                <div className="h-2 bg-gradient-to-r from-primary to-purple-600"></div>
+                                <CardContent className="p-4 sm:p-6 md:p-8">
+                                    <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6">
+                                        <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 text-primary">
+                                            <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8" />
+                                        </div>
 
-                                            <p className="text-muted-foreground mb-4">{edu.description}</p>
-
-                                            <div>
-                                                <h5 className="font-medium text-foreground mb-2">Key Courses:</h5>
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                                    {edu.courses.map((course, courseIndex) => (
-                                                        <div key={courseIndex} className="bg-primary/10 rounded-md p-2 text-sm text-primary">
-                                                            {course}
-                                                        </div>
-                                                    ))}
+                                        <div className="flex-1">
+                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 sm:mb-3">
+                                                <h4 className="text-lg sm:text-xl font-semibold text-foreground">
+                                                    {item.degree}
+                                                </h4>
+                                                <div className="flex items-center text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-0">
+                                                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                                                    <span>{item.period}</span>
                                                 </div>
                                             </div>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
 
-                    <motion.div custom={1} variants={sectionVariants}>
-                        <h3 className="text-2xl font-semibold mb-6 flex items-center text-foreground">
-                            <Calendar className="h-6 w-6 mr-2 text-primary" />
-                            Conferences & Events
-                        </h3>
-
-                        <div className="space-y-6">
-                            {events.map((event, index) => (
-                                <motion.div
-                                    key={index}
-                                    custom={index}
-                                    variants={cardVariants}
-                                    whileHover={{ x: 10 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Card className="border-none shadow-lg bg-card/50 backdrop-blur-sm overflow-hidden">
-                                        <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-purple-600"></div>
-                                        <CardContent className="p-6 pl-8">
-                                            <div className="flex justify-between items-start mb-3">
-                                                <h4 className="text-lg font-semibold text-foreground">{event.title}</h4>
-                                                <Badge className="bg-primary/10 hover:bg-primary/20 text-primary transition-colors">
-                                                    {event.year}
-                                                </Badge>
+                                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mb-3 sm:mb-4">
+                                                <div className="text-base sm:text-lg font-medium text-primary">
+                                                    {item.institution}
+                                                </div>
+                                                <div className="flex items-center text-xs sm:text-sm text-muted-foreground">
+                                                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                                                    <span>{item.location}</span>
+                                                </div>
                                             </div>
-                                            <p className="text-primary mb-2">{event.organizer}</p>
-                                            <p className="text-muted-foreground">{event.description}</p>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
 
-                        <motion.div className="mt-8" custom={4} variants={cardVariants}>
-                            <h3 className="text-2xl font-semibold mb-6 flex items-center text-foreground">
-                                <Award className="h-6 w-6 mr-2 text-primary" />
-                                Additional Certifications
-                            </h3>
+                                            <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                                                {item.description}
+                                            </p>
 
-                            <Card className="border-none shadow-lg bg-card/50 backdrop-blur-sm">
-                                <CardContent className="p-6">
-                                    <ul className="space-y-4">
-                                        <li className="flex items-start">
-                                            <div className="bg-primary/20 p-2 rounded-full mr-3">
-                                                <Award className="h-5 w-5 text-primary" />
-                                            </div>
                                             <div>
-                                                <h4 className="font-medium text-foreground">GitHub Student Pack</h4>
-                                                <p className="text-sm text-muted-foreground">GitHub Education</p>
+                                                <h5 className="text-sm sm:text-base font-medium text-foreground mb-2">
+                                                    Key Achievements:
+                                                </h5>
+                                                <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm text-muted-foreground">
+                                                    {item.achievements.map(
+                                                        (achievement, i) => (
+                                                            <li key={i}>
+                                                                {achievement}
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
                                             </div>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <div className="bg-primary/20 p-2 rounded-full mr-3">
-                                                <Award className="h-5 w-5 text-primary" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-medium text-foreground">AI with Python Certification</h4>
-                                                <p className="text-sm text-muted-foreground">Python Institute</p>
-                                            </div>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <div className="bg-primary/20 p-2 rounded-full mr-3">
-                                                <Award className="h-5 w-5 text-primary" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-medium text-foreground">Google Developer Certification</h4>
-                                                <p className="text-sm text-muted-foreground">Google</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    </div>
                                 </CardContent>
                             </Card>
                         </motion.div>
-                    </motion.div>
+                    ))}
+
+                    {/* <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4 sm:mb-6 mt-8 sm:mt-12 flex items-center">
+                        <Award className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-primary" />
+                        Certifications
+                    </h3>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                        {certifications.map((cert, index) => (
+                            <motion.div
+                                key={index}
+                                custom={index + education.length}
+                                variants={cardVariants}
+                            >
+                                <Card className="border-none shadow-lg bg-card/50 backdrop-blur-sm h-full">
+                                    <CardContent className="p-4 sm:p-6 flex flex-col h-full">
+                                        <div className="flex items-start mb-3 sm:mb-4">
+                                            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 text-primary mr-3">
+                                                <Award className="h-4 w-4 sm:h-5 sm:w-5" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-base sm:text-lg font-semibold text-foreground">
+                                                    {cert.name}
+                                                </h4>
+                                                <div className="flex items-center text-xs sm:text-sm text-muted-foreground mt-1">
+                                                    <span>{cert.issuer}</span>
+                                                    <span className="mx-2">
+                                                        •
+                                                    </span>
+                                                    <span>{cert.date}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-xs sm:text-sm text-muted-foreground mt-auto">
+                                            {cert.description}
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
+                        ))}
+                    </div> */}
                 </motion.div>
             </div>
         </section>

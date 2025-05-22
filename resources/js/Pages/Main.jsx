@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { ChevronDown } from "lucide-react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import AppLayout from "@/Layouts/AppLayout";
@@ -41,14 +40,7 @@ export default function Portfolio() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5, duration: 0.5 }}
-                >
-                    <a
-                        href="#about"
-                        className="animate-bounce p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
-                    >
-                        <ChevronDown className="h-6 w-6 text-primary" />
-                    </a>
-                </motion.div>
+                ></motion.div>
                 <SkillsSection />
                 <ProjectsSection />
                 <BioSection />

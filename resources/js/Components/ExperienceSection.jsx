@@ -1,7 +1,8 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Card, CardContent } from '@/Components/components/ui/card';
-import { Badge } from '@/Components/components/ui/badge';
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Card, CardContent } from "@/Components/components/ui/card";
+import { Badge } from "@/Components/components/ui/badge";
+import { Calendar, Briefcase, MapPin } from 'lucide-react';
 
 export default function ExperienceSection() {
     const ref = useRef(null);
@@ -9,46 +10,70 @@ export default function ExperienceSection() {
 
     const experiences = [
         {
-            title: 'Senior Software Developer',
-            company: 'Tech Innovations Inc.',
-            period: '2021 - Present',
+            title: "Senior Frontend Developer",
+            company: "TechCorp",
+            location: "San Francisco, CA",
+            period: "Jan 2022 - Present",
             description:
-                'Leading the development of web applications using React and Node.js. Implementing CI/CD pipelines and mentoring junior developers.',
+                "Leading a team of 5 developers in building modern web applications using React, TypeScript, and Next.js. Implemented CI/CD pipelines and improved performance by 40%.",
             responsibilities: [
-                'Architecting scalable web applications',
-                'Code reviews and quality assurance',
-                'Implementing new features and maintaining existing codebase',
-                'Collaborating with product and design teams',
+                "Architected and developed scalable frontend solutions",
+                "Mentored junior developers and conducted code reviews",
+                "Collaborated with product and design teams to deliver high-quality user experiences",
+                "Implemented performance optimizations and accessibility improvements",
             ],
-            technologies: ['React', 'Node.js', 'AWS', 'Docker', 'MongoDB'],
+            technologies: [
+                "React",
+                "TypeScript",
+                "Next.js",
+                "Redux",
+                "Tailwind CSS",
+                "Jest",
+            ],
         },
         {
-            title: 'Full Stack Developer',
-            company: 'Digital Solutions Ltd.',
-            period: '2018 - 2021',
+            title: "Full Stack Developer",
+            company: "InnovateTech",
+            location: "Boston, MA",
+            period: "Mar 2020 - Dec 2021",
             description:
-                'Developed and maintained web applications for clients in various industries. Worked on both frontend and backend development.',
+                "Developed full-stack applications using React, Node.js, and MongoDB. Created RESTful APIs and implemented authentication systems.",
             responsibilities: [
-                'Building responsive user interfaces',
-                'Developing RESTful APIs',
-                'Database design and optimization',
-                'Troubleshooting and debugging',
+                "Built and maintained multiple client-facing web applications",
+                "Designed and implemented database schemas and API endpoints",
+                "Integrated third-party services and payment gateways",
+                "Participated in agile development processes",
             ],
-            technologies: ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'AWS'],
+            technologies: [
+                "React",
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "GraphQL",
+                "Docker",
+            ],
         },
         {
-            title: 'Freelance Web Developer',
-            company: 'Self-employed',
-            period: '2016 - 2018',
+            title: "Frontend Developer",
+            company: "WebSolutions",
+            location: "New York, NY",
+            period: "Jun 2018 - Feb 2020",
             description:
-                'Worked with clients to design and develop websites and web applications. Managed projects from concept to deployment.',
+                "Developed responsive web interfaces using HTML, CSS, and JavaScript. Worked with Vue.js to create interactive user experiences.",
             responsibilities: [
-                'Client consultation and requirement gathering',
-                'Website design and development',
-                'E-commerce implementation',
-                'Maintenance and support',
+                "Implemented responsive designs from Figma mockups",
+                "Optimized website performance and loading times",
+                "Collaborated with backend developers to integrate APIs",
+                "Fixed bugs and improved existing features",
             ],
-            technologies: ['WordPress', 'PHP', 'JavaScript', 'HTML/CSS', 'MySQL'],
+            technologies: [
+                "HTML/CSS",
+                "JavaScript",
+                "Vue.js",
+                "SASS",
+                "Webpack",
+                "Git",
+            ],
         },
     ];
 
@@ -63,7 +88,7 @@ export default function ExperienceSection() {
     };
 
     const cardVariants = {
-        hidden: { opacity: 0, y: 50 },
+        hidden: { opacity: 0, y: 30 },
         visible: (i) => ({
             opacity: 1,
             y: 0,
@@ -75,68 +100,107 @@ export default function ExperienceSection() {
     };
 
     return (
-        <section id="experience" className="py-16 bg-muted/30 dark:bg-muted/10">
+        <section
+            id="experience"
+            className="py-8 sm:py-12 md:py-16 bg-muted/30 dark:bg-muted/10"
+        >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-8 sm:mb-12"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    animate={
+                        isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-3xl font-bold text-foreground">Experience</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                        Experience
+                    </h2>
                     <div className="mt-2 h-1 w-20 bg-gradient-to-r from-primary to-purple-600 mx-auto"></div>
+                    <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
+                        My professional journey and the companies I've had the
+                        pleasure to work with.
+                    </p>
                 </motion.div>
 
                 <motion.div
-                    className="space-y-8"
+                    className="space-y-6 sm:space-y-8"
                     variants={containerVariants}
                     initial="hidden"
-                    animate={isInView ? 'visible' : 'hidden'}
+                    animate={isInView ? "visible" : "hidden"}
                 >
-                    {experiences.map((exp, index) => (
+                    {experiences.map((experience, index) => (
                         <motion.div
                             key={index}
                             custom={index}
                             variants={cardVariants}
-                            whileHover={{ x: 10 }}
-                            transition={{ duration: 0.2 }}
                         >
                             <Card className="border-none shadow-lg bg-card/50 backdrop-blur-sm overflow-hidden">
-                                <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-purple-600"></div>
-                                <CardContent className="p-6 pl-8">
-                                    <div className="flex flex-col md:flex-row md:items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="text-xl font-semibold text-foreground">{exp.title}</h3>
-                                            <p className="text-lg text-primary">{exp.company}</p>
+                                <div className="h-2 bg-gradient-to-r from-primary to-purple-600"></div>
+                                <CardContent className="p-4 sm:p-6 md:p-8">
+                                    <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6">
+                                        <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 text-primary">
+                                            <Briefcase className="h-6 w-6 sm:h-8 sm:w-8" />
                                         </div>
-                                        <div className="mt-2 md:mt-0">
-                                            <Badge variant="outline" className="text-sm font-medium border-primary/50 text-primary">
-                                                {exp.period}
-                                            </Badge>
+
+                                        <div className="flex-1">
+                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 sm:mb-3">
+                                                <h3 className="text-lg sm:text-xl font-semibold text-foreground">
+                                                    {experience.title}
+                                                </h3>
+                                                <div className="flex items-center text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-0">
+                                                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                                                    <span>
+                                                        {experience.period}
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mb-3 sm:mb-4">
+                                                <div className="text-base sm:text-lg font-medium text-primary">
+                                                    {experience.company}
+                                                </div>
+                                                <div className="flex items-center text-xs sm:text-sm text-muted-foreground">
+                                                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                                                    <span>
+                                                        {experience.location}
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                                                {experience.description}
+                                            </p>
+
+                                            <div className="mb-4">
+                                                <h4 className="text-sm sm:text-base font-medium text-foreground mb-2">
+                                                    Key Responsibilities:
+                                                </h4>
+                                                <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm text-muted-foreground">
+                                                    {experience.responsibilities.map(
+                                                        (responsibility, i) => (
+                                                            <li key={i}>
+                                                                {responsibility}
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </div>
+
+                                            <div className="flex flex-wrap gap-2">
+                                                {experience.technologies.map(
+                                                    (tech, i) => (
+                                                        <Badge
+                                                            key={i}
+                                                            variant="secondary"
+                                                            className="bg-primary/10 hover:bg-primary/20 text-primary transition-colors text-xs"
+                                                        >
+                                                            {tech}
+                                                        </Badge>
+                                                    )
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <p className="text-muted-foreground mb-4">{exp.description}</p>
-
-                                    <div className="mb-4">
-                                        <h4 className="font-medium text-foreground mb-2">Key Responsibilities:</h4>
-                                        <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                                            {exp.responsibilities.map((resp, respIndex) => (
-                                                <li key={respIndex}>{resp}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {exp.technologies.map((tech, techIndex) => (
-                                            <Badge
-                                                key={techIndex}
-                                                variant="secondary"
-                                                className="bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
-                                            >
-                                                {tech}
-                                            </Badge>
-                                        ))}
                                     </div>
                                 </CardContent>
                             </Card>

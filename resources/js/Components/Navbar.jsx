@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "@inertiajs/react";
 import { Button } from "@/Components/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/Components/ThemeProvider";
 
 const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
+    { name: "Projects", href: "/projects/index" },
     { name: "Bio", href: "#bio" },
     { name: "Experience", href: "#experience" },
     { name: "Education", href: "#education" },
@@ -30,6 +31,20 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Close mobile menu when clicking outside
+    useEffect(() => {
+        if (isOpen) {
+            const handleClickOutside = (e) => {
+                if (!e.target.closest("nav") && !e.target.closest("button")) {
+                    setIsOpen(false);
+                }
+            };
+            document.addEventListener("click", handleClickOutside);
+            return () =>
+                document.removeEventListener("click", handleClickOutside);
+        }
+    }, [isOpen]);
 
     const toggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark");
@@ -72,16 +87,16 @@ export default function Navbar() {
             )}
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center py-4">
-                    <a
-                        href="#home"
-                        className="text-xl font-bold text-foreground transition-colors duration-200"
+                <div className="flex justify-between items-center py-3 sm:py-4">
+                    <Link
+                        href="/"
+                        className="text-lg sm:text-xl font-bold text-foreground transition-colors duration-200"
                     >
                         Portfolio
-                    </a>
+                    </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex space-x-6">
+                    <nav className="hidden md:flex space-x-4 lg:space-x-6">
                         {navItems.map((item, i) => (
                             <motion.div
                                 key={item.name}
@@ -90,13 +105,13 @@ export default function Navbar() {
                                 animate="visible"
                                 variants={navItemVariants}
                             >
-                                <a
+                                <Link
                                     href={item.href}
                                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
                                 >
                                     {item.name}
                                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                                </a>
+                                </Link>
                             </motion.div>
                         ))}
                     </nav>
@@ -110,9 +125,9 @@ export default function Navbar() {
                                 className="text-foreground hover:text-primary transition-colors"
                             >
                                 {theme === "dark" ? (
-                                    <Sun className="h-5 w-5" />
+                                    <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
                                 ) : (
-                                    <Moon className="h-5 w-5" />
+                                    <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
                                 )}
                                 <span className="sr-only">Toggle theme</span>
                             </Button>
@@ -126,9 +141,9 @@ export default function Navbar() {
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {isOpen ? (
-                                <X className="h-6 w-6" />
+                                <X className="h-5 w-5 sm:h-6 sm:w-6" />
                             ) : (
-                                <Menu className="h-6 w-6" />
+                                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
                             )}
                         </Button>
                     </div>
@@ -138,7 +153,7 @@ export default function Navbar() {
             {/* Mobile Navigation Menu */}
             {isOpen && (
                 <motion.div
-                    className="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
+                    className="md:hidden bg-background/95 backdrop-blur-md border-b border-border max-h-[70vh] overflow-y-auto"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -152,13 +167,13 @@ export default function Navbar() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: i * 0.05, duration: 0.2 }}
                             >
-                                <a
+                                <Link
                                     href={item.href}
                                     className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-primary/10 transition-colors"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             </motion.div>
                         ))}
                     </div>
