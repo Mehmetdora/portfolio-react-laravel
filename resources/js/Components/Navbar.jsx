@@ -8,13 +8,13 @@ import { useTheme } from "@/Components/ThemeProvider";
 
 const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
+    { name: "About", href: "/#about" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Bio", href: "/#bio" },
+    { name: "Experience", href: "/#experience" },
+    { name: "Education", href: "/#education" },
+    { name: "Contact", href: "/#contact" },
     { name: "Projects", href: "/projects/index" },
-    { name: "Bio", href: "#bio" },
-    { name: "Experience", href: "#experience" },
-    { name: "Education", href: "#education" },
-    { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {

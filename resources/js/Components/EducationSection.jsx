@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "@/Components/components/ui/card";
-import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 
 export default function EducationSection() {
     const ref = useRef(null);
@@ -9,29 +9,15 @@ export default function EducationSection() {
 
     const education = [
         {
-            degree: "Master of Science in Computer Science",
-            institution: "Stanford University",
-            location: "Stanford, CA",
-            period: "2017 - 2019",
+            degree: "Bachelor of Science in Computer Engineering",
+            institution: "Çukurova University",
+            location: "Adana, Turkey",
+            period: "2021 - Present",
             description:
-                "Specialized in Human-Computer Interaction and Web Technologies. Graduated with honors and a 3.9 GPA.",
+                "Currently pursuing a bachelor's degree in Computer Engineering. Completed the preparatory year in 2021 and currently in the 3rd year of study.",
             achievements: [
-                'Thesis: "Improving User Experience in Progressive Web Applications"',
-                "Teaching Assistant for Web Development and UI/UX Design courses",
-                "Received the Outstanding Graduate Student Award",
-            ],
-        },
-        {
-            degree: "Bachelor of Science in Computer Science",
-            institution: "Massachusetts Institute of Technology",
-            location: "Cambridge, MA",
-            period: "2013 - 2017",
-            description:
-                "Focused on Software Engineering and Data Structures. Participated in multiple hackathons and coding competitions.",
-            achievements: [
-                "Capstone Project: E-learning platform with adaptive learning algorithms",
-                "Member of the Web Development Club and AI Research Group",
-                "Dean's List for all semesters",
+                "Completed core courses such as Object-Oriented Programming, Data Structures, SQL, and Computer Networking",
+                "Actively involved in hands-on projects and academic coursework",
             ],
         },
     ];

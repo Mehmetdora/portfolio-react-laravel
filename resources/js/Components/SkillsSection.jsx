@@ -11,7 +11,6 @@ import SectionHeader from "@/Components/components/ui/section-header";
 
 */
 
-
 export default function SkillsSection() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -19,33 +18,15 @@ export default function SkillsSection() {
     // Technology categories with their respective icons/logos
     const skillCategories = [
         {
-            name: "Frontend",
-            description:
-                "Technologies I use to build interactive user interfaces and build fast.",
-            skills: [
-                { name: "React", image: "/images/skills/react.svg" },
-                { name: "Vue.js", image: "/images/skills/vue.svg" },
-                { name: "JavaScript", image: "/images/skills/javascript.svg" },
-                { name: "TypeScript", image: "/images/skills/typescript.svg" },
-                { name: "HTML5", image: "/images/skills/html5.svg" },
-                { name: "CSS3", image: "/images/skills/css3.svg" },
-                { name: "Tailwind CSS", image: "/images/skills/tailwind.svg" },
-                { name: "Next.js", image: "/images/skills/nextjs.svg" },
-            ],
-        },
-        {
             name: "Backend",
             description:
                 "Technologies I use to build robust server-side applications",
             skills: [
-                { name: "Node.js", image: "/images/skills/nodejs.svg" },
-                { name: "Laravel", image: "/images/skills/laravel.svg" },
-                { name: "Python", image: "/images/skills/python.svg" },
-                { name: "Express", image: "/images/skills/express.svg" },
-                { name: "MySQL", image: "/images/skills/mysql.svg" },
-                { name: "MongoDB", image: "/images/skills/mongodb.svg" },
-                { name: "PostgreSQL", image: "/images/skills/postgresql.svg" },
-                { name: "GraphQL", image: "/images/skills/graphql.svg" },
+                { name: "Laravel", image: "/skills/laravel.svg" },
+                { name: "Node.js", image: "/skills/nodejs.svg" },
+                { name: "Python", image: "/skills/python.svg" },
+                { name: "Express", image: "/skills/express.svg" },
+                { name: "MySQL", image: "/skills/mysql.svg" },
             ],
         },
         {
@@ -53,14 +34,24 @@ export default function SkillsSection() {
             description:
                 "Tools and technologies I use for development and deployment",
             skills: [
-                { name: "Git", image: "/images/skills/git.svg" },
-                { name: "Docker", image: "/images/skills/docker.svg" },
-                { name: "AWS", image: "/images/skills/aws.svg" },
-                { name: "GitHub", image: "/images/skills/github.svg" },
-                { name: "VS Code", image: "/images/skills/vscode.svg" },
-                { name: "Figma", image: "/images/skills/figma.svg" },
-                { name: "Jest", image: "/images/skills/jest.svg" },
-                { name: "Webpack", image: "/images/skills/webpack.svg" },
+                { name: "Git", image: "/skills/git.svg" },
+                { name: "Docker", image: "/skills/docker.svg" },
+                { name: "GitHub", image: "/skills/github.svg" },
+                { name: "VS Code", image: "/skills/vscode.svg" },
+            ],
+        },
+        {
+            name: "Frontend",
+            description:
+                "Technologies I use to build interactive user interfaces and build fast.",
+            skills: [
+                { name: "React", image: "/skills/react.svg" },
+                { name: "Livewire", image: "/skills/livewire.png" },
+                { name: "JavaScript", image: "/skills/javascript.svg" },
+                { name: "HTML5", image: "/skills/html.svg" },
+                { name: "CSS3", image: "/skills/css.svg" },
+                { name: "Bootstarp CSS", image: "/skills/bootstrap.svg" },
+                { name: "Tailwind CSS", image: "/skills/tailwind.svg" },
             ],
         },
     ];
@@ -188,21 +179,13 @@ export default function SkillsSection() {
                             </h3>
                             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                                 {[
-                                    "Redux",
-                                    "Nuxt.js",
-                                    "SASS/SCSS",
-                                    "Firebase",
+                                    "Swift",
+                                    "BeautifulSoup-Python",
                                     "RESTful APIs",
-                                    "CI/CD",
-                                    "Agile",
                                     "Responsive Design",
-                                    "UI/UX Design",
                                     "Performance Optimization",
-                                    "SEO",
-                                    "Accessibility",
-                                    "Testing",
-                                    "Microservices",
-                                    "Serverless",
+                                    "JQuery",
+                                    "Eloqunet ORM - Laravel",
                                 ].map((skill, index) => (
                                     <motion.span
                                         key={index}

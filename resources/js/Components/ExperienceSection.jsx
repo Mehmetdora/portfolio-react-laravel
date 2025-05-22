@@ -10,71 +10,25 @@ export default function ExperienceSection() {
 
     const experiences = [
         {
-            title: "Senior Frontend Developer",
-            company: "TechCorp",
-            location: "San Francisco, CA",
-            period: "Jan 2022 - Present",
+            title: "Intern - Backend Developing",
+            company: "SEYTİM",
+            location: "Adana, TR",
+            period: "July 2024 - August 2024",
             description:
-                "Leading a team of 5 developers in building modern web applications using React, TypeScript, and Next.js. Implemented CI/CD pipelines and improved performance by 40%.",
+                "Bu stajımda backend için laravel kullanarak çok kullanıcılı bir blog platformunun yapımına ortak oldum.",
             responsibilities: [
-                "Architected and developed scalable frontend solutions",
-                "Mentored junior developers and conducted code reviews",
-                "Collaborated with product and design teams to deliver high-quality user experiences",
-                "Implemented performance optimizations and accessibility improvements",
+                "Hazır temalar ve bootstarp üzerinde uygun araçları kullandım",
+                "Laravel ile verilerin işlenmesi ve veritabanı işlemlerini gerçekleştirdim",
+                "Eloquent-ORM kullanarak ilişkili verilerin MySQL de tutulmasını sağladım",
             ],
             technologies: [
-                "React",
-                "TypeScript",
-                "Next.js",
-                "Redux",
-                "Tailwind CSS",
-                "Jest",
+                "PHP-Laravel",
+                "MySQL",
+                "Bootstrap",
+                "JQuery",
+                "Ajax",
             ],
-        },
-        {
-            title: "Full Stack Developer",
-            company: "InnovateTech",
-            location: "Boston, MA",
-            period: "Mar 2020 - Dec 2021",
-            description:
-                "Developed full-stack applications using React, Node.js, and MongoDB. Created RESTful APIs and implemented authentication systems.",
-            responsibilities: [
-                "Built and maintained multiple client-facing web applications",
-                "Designed and implemented database schemas and API endpoints",
-                "Integrated third-party services and payment gateways",
-                "Participated in agile development processes",
-            ],
-            technologies: [
-                "React",
-                "Node.js",
-                "Express",
-                "MongoDB",
-                "GraphQL",
-                "Docker",
-            ],
-        },
-        {
-            title: "Frontend Developer",
-            company: "WebSolutions",
-            location: "New York, NY",
-            period: "Jun 2018 - Feb 2020",
-            description:
-                "Developed responsive web interfaces using HTML, CSS, and JavaScript. Worked with Vue.js to create interactive user experiences.",
-            responsibilities: [
-                "Implemented responsive designs from Figma mockups",
-                "Optimized website performance and loading times",
-                "Collaborated with backend developers to integrate APIs",
-                "Fixed bugs and improved existing features",
-            ],
-            technologies: [
-                "HTML/CSS",
-                "JavaScript",
-                "Vue.js",
-                "SASS",
-                "Webpack",
-                "Git",
-            ],
-        },
+        }
     ];
 
     const containerVariants = {

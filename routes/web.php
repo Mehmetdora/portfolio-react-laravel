@@ -17,7 +17,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('main');
-})->name('main');
+})->name('main'); 
 
 Route::controller(PortfolioController::class)->group(function(){
     Route::get('/','main')->name('main');

@@ -63,7 +63,7 @@ export default function Index({ projects }) {
     };
 
     return (
-        <AppLayout title="Projects | John Doe Portfolio">
+        <AppLayout title="Mehmet Dora | Projects">
             <Navbar />
             <main className="pt-24">
                 <section className="py-8 sm:py-12 md:py-16 bg-muted/30 dark:bg-muted/10">
